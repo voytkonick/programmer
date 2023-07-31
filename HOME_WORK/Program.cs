@@ -95,59 +95,128 @@ else
 
 /*
 
-int Digit(int num)
+int Digit(string number)
 {
-    int dozens = num / 10;
-    int second = dozens % 10;
-    return second;
+    System.Console.Write(number);
+    string input = Console.ReadLine();
+    int text = Convert.ToInt32(input);
+    return text;
+}
+
+int number = Digit("Input a three-digit number: ");
+if (number < 100 || number >=1000)
+{
+    Console.Write("!!! Enter a three-digit number !!!");
+    return;
 }
 Console.Write("Input a three-digit number: ");
-int num = Convert.ToInt32(Console.ReadLine());
-
-int second = Digit(num);
-Console.WriteLine("Second digit " + second);
+int second = number / 10 % 10;
+Console.WriteLine($"Second digit {second}");
 
 */
 
 // Task 13. Напишите программу, которая выводит третью цифру заданного 
 // числа ( или -1, если третьей цифры нет).
 
+/*
+
+int Digit(string number)
+{
+    System.Console.Write(number);
+    string input = Console.ReadLine();
+    int text = Convert.ToInt32(input);
+    return text;
+}
 
 int ThirdDigit(int num)
 {   
-    int hunders = num / 1000;
-        return hunders;     
+    while (num > 999)
+    {
+        num /= 10;
+    }
+    return num % 10;     
 }
-Console.Write("Input a number: ");
-int num = Convert.ToInt32(Console.ReadLine());
 
-int third = ThirdDigit(num);
-Console.Write($"Third digit of {num} is {third}");
+bool ValidDigit(int num)
+{   
+    if (num < 100)
+    {
+        Console.Write("Third digit NO!");
+        return false;
+    }
+    return true;     
+}
 
+int num = Digit("Input a number: ");
+if (ValidDigit(num))
+{
+    Console.Write(ThirdDigit(num));
+}
 
+*/
 
 // Task 15. Напишите программу, которая принимает на вход цифру, 
 // обозначающую день недели, и проверяет, является ли этот день выходным.
 
 /*
 
-bool Weekend(int day)
+int Digit(string number)
 {
-    return day >= 1 && day <= 5;
+    System.Console.Write(number);
+    string input = Console.ReadLine();
+    int text = Convert.ToInt32(input);
+    return text;
 }
-Console.Write("Input a number from 1 to 7: ");
-int day = Convert.ToInt32(Console.ReadLine());
 
-bool res = Weekend(day);
+bool Working(int day)
+{
+    if (day > 0 && day <=7)
+    {
+        return true;
+    }
+    Console.Write ("!!! Enter the day of the week !!!");
+    return false;
+}
 
-if (res) Console.Write("Working day :(");
-else Console.Write("Weekend! :)");
+bool Weekend(int weekday)
+{
+    if (weekday > 5)
+    {
+        return true;
+    }
+    return false;
+}
+
+int weekday = Digit("Enter the day 1 - 7 of the week: ");
+
+if (Working(weekday)) 
+    if (Weekend(weekday))
+    {
+        Console.Write("Weekend! :)");
+    }
+        
+    else 
+    {
+        Console.Write("Working day :(");
+    }
 
 */
 
 
-// Task 19. Любое число на вход.
 
-// Task 21.
 
-// Task 23. Math.Pow(5, 3);
+// Task 19. Напишите программу, которая принимает на вход любое число 
+// и проверяет, является ли оно палиндромом.
+
+
+
+
+// Task 21. Напишите программу, которая принимает на вход координаты 
+// двух точек и находит расстояние между ними в 3D пространстве.
+
+
+
+
+// Task 23. Напишите программу, которая принимает на вход число (N)
+// и выдаёт таблицу кубов чисел от 1 до N.
+// Math.Pow(5, 3);
