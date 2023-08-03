@@ -43,9 +43,9 @@ Console.WriteLine($"New version of {randNumber} is {newNumber}");
 // Task 2. Напишите программу, которая принимает на вход число и 
 // проверяет, кратно ли оно одновременно a и b.
 
-/*
 
-bool IsDividable(int num, int div1, int div2);
+/*
+bool IsDivisible(int num, int div1, int div2);
 {
     // if (num % div1 == 0 && num % div2 == 0) // логическое И &&, логическое ИЛИ ||
     //     return true;
@@ -54,14 +54,15 @@ bool IsDividable(int num, int div1, int div2);
 
     return num % div1 == 0 && num % div2 == 0;
 }
-Console.Write("Input a number for checking: ");
-int number = Console.ToInt32(Console.ReadLine());
-Console.Write("Input a first: ");
-int divider1 = Console.ToInt32(Console.ReadLine());
-Console.Write("Input a second: ");
-int divider2 = Console.ToInt32(Console.ReadLine());
 
-bool res = IsDividable(number, divider1, divider2);
+Console.Write("Input a number for checking: ");
+int number = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a first: ");
+int divider1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Input a second: ");
+int divider2 = Convert.ToInt32(Console.ReadLine());
+
+bool res = IsDivisible(number, divider1, divider2);
 
 if (res) Console.Write("yes");
 else Console.Write("no");

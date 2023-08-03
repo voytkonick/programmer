@@ -4,7 +4,7 @@
 int intNumber = 25;
 double dubleNumber = 12.12;
 string text = "some text";
-bool logicVar = true;
+bool logicVar = true;       // or false
 
 
 

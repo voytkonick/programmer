@@ -1,4 +1,4 @@
-﻿//       Домашнее задание 1
+﻿        // _____________________________Домашнее задание 1.___________________________________
 
 // Задача 2: Напишите программу, которая на вход принимает два числа 
 // и выдаёт, какое число большее, а какое меньшее.
@@ -89,7 +89,8 @@ else
 */
 
 
-//      Домашнее задание 2.
+        // ___________________________Домашнее задание 2.______________________________
+
 // Task 10. Напишите программу, которая принимает на вход трёхзначное 
 // число и на выходе показывает вторую цифру этого числа.
 
@@ -204,19 +205,104 @@ if (Working(weekday))
 
 
 
+        // _________________________Домашнее задание 3._________________________________
 
 // Task 19. Напишите программу, которая принимает на вход любое число 
 // и проверяет, является ли оно палиндромом.
 
+// Не вышло у меня добить синтаксис, есть сложности с этой задачей.
+/*
 
+int Revers(int n);
+    int temp = n;
+    int rev = 0;
+    while(n > 0)
+{
+        int dig = n % 10;
+        rev = rev * 10 + dig;
+        n = n / 10;
+}
+    if(temp == rev)
+{
+        Console.WriteLine("Number is palindrome!");
+}
+    else
+{
+        Console.WriteLine("Number is not palindrome!");
+}
 
+Console.Write("Enter a number: ");
+int n = Convert.ToInt32(Console.ReadLine());
+
+Console.Write(Revers(n));
+*/
 
 // Task 21. Напишите программу, которая принимает на вход координаты 
 // двух точек и находит расстояние между ними в 3D пространстве.
 
+/*
 
+double Distance(double x1, double y1, double z1, double x2, double y2, double z2)
+{
+    double deltaX = x2 - x1;
+    double deltaY = y2 - y1;
+    double deltaZ = z2 - z1;
+
+    return Math.Round(Math.Sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ), 2);
+}
+Console.Write("Input x1: ");
+double x1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Input y1: ");
+double y1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Input z1: ");
+double z1 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Input x2: ");
+double x2 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Input y2: ");
+double y2 = Convert.ToDouble(Console.ReadLine());
+Console.Write("Input z2: ");
+double z2 = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine(Distance (x1, y1, z1, x2, y2, z2));
+
+*/
 
 
 // Task 23. Напишите программу, которая принимает на вход число (N)
 // и выдаёт таблицу кубов чисел от 1 до N.
 // Math.Pow(5, 3);
+
+/*
+
+void WriteCube(int number)
+{
+    int current = 1;
+    while (current <= number)
+    {
+        Console.WriteLine($"{current} - {Math.Pow(current, 3)}");
+        current++;
+    }
+}
+Console.Write("Input a number: ");
+int number = Convert.ToInt32(Console.ReadLine());
+
+WriteCube(number);
+
+*/
+
+
+
+// ___________________Домашняя работа 4.______________________
+
+// 25. Напишите цикл, который принимает на вход два числа (A и B) 
+// и возводит число A в натуральную степень B.
+// Придумать свой метод. Метод Math.Pow только для проверки.
+
+
+// 27.Напишите программу, которая принимает на вход число и выдаёт 
+// сумму цифр в числе.
+
+
+// 29. Напишите программу, которая задаёт массив из m элементов 
+// и выводит их на экран.
+// Ввод элементов пользователем.
