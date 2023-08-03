@@ -60,7 +60,7 @@ Console.Write(Work(number));
 
 // Генерация произвольного массива:
 
-/*
+
 
 int[] CreateRandomArray(int size, int minValue, int maxValue)
 {
@@ -93,4 +93,3 @@ int max = Convert.ToInt32(Console.ReadLine());
 int[] myArray = CreateRandomArray(length, min, max);
 WriteArray(myArray);
 
-*/
