@@ -75,16 +75,16 @@ else
 
 /*
 
-// Console.Write("Input a number: ");
-// int num = Convert.ToInt32(Console.ReadLine());
-// int current = 1;
+Console.Write("Input a number: ");
+int num = Convert.ToInt32(Console.ReadLine());
+int current = 1;
 
-// while (current <= num)
-// {
-//     if (current %2 == 0)
-//     Console.Write($"{current} ");
-//     current++;
-// }
+while (current <= num)
+{
+    if (current %2 == 0)
+    Console.Write($"{current} ");
+    current++;
+}
 
 */
 
@@ -394,3 +394,140 @@ int[] myArray = CreateArray(length);
 WriteArray(myArray);
 
 */
+
+
+
+
+
+
+// ____________________________ Домашняя работа 5 ________________________________
+
+// 34. Задайте массив заполненный случайными положительными трёхзначными числами. 
+// Напишите программу, которая покажет количество чётных чисел в массиве.
+
+/*
+
+int[] CreateRandomArray(int size)
+{
+    int[] array = new int[size];
+    for(int i = 0; i < size; i++)
+        array[i] = new Random().Next(99,1000);
+
+    return array;
+}
+
+void WriteArray(int[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+        Console.Write(array[i] + " ");
+    Console.WriteLine();
+}
+
+int NumberOfEven(int[] array)
+{
+    int quantity = 0;
+    for (int i = 0; i < array.Length; i++)
+        if (array[i] % 2 == 0)
+            quantity += 1;
+
+    return quantity;         
+}
+
+Console.Write("Enter a length of an array: ");
+int length = Convert.ToInt32(Console.ReadLine());
+
+int[] myArray = CreateRandomArray(length);
+WriteArray(myArray);
+
+Console.WriteLine(NumberOfEven(myArray));
+
+*/
+
+
+
+
+// 36. Задайте одномерный массив, заполненный случайными числами.
+// Найдите сумму элементов, стоящих на нечётных позициях.
+
+/*
+
+int[] CreateRandomArray(int size, int minValue, int maxValue)
+{
+    int[] array = new int[size];
+    for(int i = 0; i < size; i++)
+        array[i] = new Random().Next(minValue, maxValue + 1);
+
+    return array;
+}
+
+void WriteArray(int[] array)
+{
+    for(int i = 0; i < array.Length; i++)
+        Console.Write(array[i] + " ");
+    Console.WriteLine();
+}
+
+int SummOfOdd(int[] array)
+{
+    int quantity = 0;
+    for (int i = 0; i < array.Length; i++)
+        if (array[i] % 2 != 0)
+            quantity = quantity + array[i];
+
+    return quantity;         
+}
+
+Console.Write("Enter a length of an array: ");
+int length = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter the min possible value: ");
+int minValue = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter the max possible value: ");
+int maxValue = Convert.ToInt32(Console.ReadLine());
+
+int[] myArray = CreateRandomArray(length, minValue, maxValue);
+WriteArray(myArray);
+
+Console.WriteLine(SummOfOdd(myArray));
+
+*/
+
+
+// 38. Задайте массив вещественных чисел. 
+// Найдите разницу между максимальным и минимальным элементов массива.
+// double
+
+
+
+Console.Write("Enter a length of an array: ");
+int size = Convert.ToInt32(Console.ReadLine());
+double[] array = new double[size];
+
+void CreateRandomArray(int size)
+{
+    Random MyArray = new Random();
+    for(int i = 0; i < size; i++)
+    {
+        array[i] = MyArray.NextDouble();
+        Console.Write($"{array[i]:F2} ");  //выводим массив с округлением до двух знаков
+    }  
+    Console.WriteLine();   
+}
+
+
+CreateRandomArray(size); //выводим массив на консоль
+
+double Difference(double[] array)
+{
+    double min = array[0];
+    double max = array[0];
+    for(int i = 1; i < array.Length; i++)
+    {
+        if(max < array[i])   //определяем максимальный элемент в массиве
+            max = array[i];
+        if(min > array[i])   //определяем минимальный элемент в массиве
+            min = array[i];
+    }
+    return max - min;   //выводим их разность
+}
+
+Console.WriteLine($"Difference between maximum and minimum: {Difference(array):F2}");

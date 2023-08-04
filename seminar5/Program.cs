@@ -141,6 +141,7 @@ Console.WriteLine(res);
 // Task 4. Задайте одномерный массив из m случайных чисел. Найдите количество элементов 
 // массива, значения которых лежат в отрезке [a,b].
 
+/*
 
 int[] CreateRandomArray(int size, int minValue, int maxValue)
 {
@@ -183,5 +184,5 @@ Console.Write("Enter the right border: ");
 int max_num = Convert.ToInt32(Console.ReadLine());
 Console.WriteLine(quantity(myArray, min_num, max_num));
 
-
+*/
 
