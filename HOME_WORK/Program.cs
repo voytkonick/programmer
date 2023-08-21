@@ -497,7 +497,7 @@ Console.WriteLine(SummOfOdd(myArray));
 // double
 
 
-
+/*
 Console.Write("Enter a length of an array: ");
 int size = Convert.ToInt32(Console.ReadLine());
 double[] array = new double[size];
@@ -531,3 +531,8 @@ double Difference(double[] array)
 }
 
 Console.WriteLine($"Difference between maximum and minimum: {Difference(array):F2}");
+
+*/
+
+
+
