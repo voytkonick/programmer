@@ -129,7 +129,7 @@ PrintArray(myArray);
 // Task 3. Напишите программу, которая будет создавать копию заданного массива с помощью 
 // поэлементного копирования.
 
-/*
+
 
 void PrintArray(int[] array)
 {
@@ -171,5 +171,3 @@ int[] myArray = CreateRamdomArray(m, a, b);
 PrintArray(myArray);
 int[] CopyMyArray = CopyArray(m, myArray);
 PrintArray(CopyMyArray);
-
-*/
