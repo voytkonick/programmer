@@ -562,3 +562,20 @@ Console.WriteLine($"Difference between maximum and minimum: {Difference(array):F
 
 
 
+// ____________________________ Домашняя работа 7 ________________________________
+
+// Задача 47.
+// double
+
+
+
+
+
+// Задача 50.
+// 
+
+
+
+
+// Задача 52.
+// 
