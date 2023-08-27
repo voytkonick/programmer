@@ -542,22 +542,69 @@ Console.WriteLine($"Difference between maximum and minimum: {Difference(array):F
 
 // Задача 41.
 // Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввел пользователь.
-// int
 
+/*
 
+Console.Write("Enter the number of element of the array: ");
+int size = Convert.ToInt32(Console.ReadLine());
+int[] Array = new int[size];
 
+void Arr(int size)
+{
+    for (int i = 0; i < size; i++)
+    {
+    Console.WriteLine($"Enter {i+1} element an array: ");
+        Array[i] = Convert.ToInt32(Console.ReadLine());
+    }
+
+}
+
+int CountNumber(int[] Array)
+{
+    int i = 0;
+    int count = 0;
+    while (i < Array.Length)
+    {
+        if(Array[i]>0)
+        count++;
+        i++;
+    }
+    return count;
+}
+
+Arr(size);
+Console.Write($"More than zero: {CountNumber(Array)}");
+
+*/
 
 // Задача 43.
 // Напишите программу, которая найдет точку пересечения двух прямых, заданных уравнениями 
 // y = k1*x +b1, y = k2*x +b2, значения b1, k1, b2 и k2 задаются пользователем.
 
+/*
 
+Console.WriteLine("Input value b1:");
+double b1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input value k1:");
+double k1 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input value b2:");
+double b2 = Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Input value k2:");
+double k2 = Convert.ToInt32(Console.ReadLine());
 
+double x = (-b2 + b1)/(-k1 + k2);
+double y = k2 * x + b2;
 
+Console.WriteLine($"Two straight lines will intersect at the coordinates X: {x}, Y: {y}");
+
+*/
 
 // Задача *. Написать программу, преобразующую число из десятеричной системы счисления 
 // в двоичную.
 // либо string, либо array
+
+
+
 
 
 
