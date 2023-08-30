@@ -603,26 +603,246 @@ Console.WriteLine($"Two straight lines will intersect at the coordinates X: {x},
 // в двоичную.
 // либо string, либо array
 
+/*
 
+using System;
 
+namespace DecimalToBinaryConverterArray
+{
+    class Program
+    {
+        static int[] DecimalToBinary(int decimalNumber)
+        {
+            if (decimalNumber == 0)
+                return new int[] { 0 };
 
+            int[] binaryArray = new int[32]; // Максимальная длина двоичного числа для int
+            int index = 0;
+
+            while (decimalNumber > 0)
+            {
+                binaryArray[index++] = decimalNumber % 2;
+                decimalNumber /= 2;
+            }
+
+            Array.Reverse(binaryArray, 0, index); // Переворачиваем массив, чтобы получить правильный порядок
+
+            return binaryArray;
+        }
+
+        static void Main(string[] args)
+        {
+            Console.Write("Введите десятичное число: ");
+            int decimalNumber = int.Parse(Console.ReadLine());
+
+            int[] binaryArray = DecimalToBinary(decimalNumber);
+            Console.Write("Двоичное представление: ");
+            foreach (int bit in binaryArray)
+            {
+                Console.Write(bit);
+            }
+        }
+    }
+}
+
+*/
 
 
 
 // ____________________________ Домашняя работа 7 ________________________________
 
-// Задача 47.
+// Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 // double
 
+/*
+
+using System;
+
+namespace RandomMatrix
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите количество строк (m): ");
+            int m = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите количество столбцов (n): ");
+            int n = int.Parse(Console.ReadLine());
+
+            // Создайте генератор случайных чисел
+            Random random = new Random();
+
+            // Создайте двумерный массив
+            double[,] matrix = new double[m, n];
+
+            // Заполните массив случайными вещественными числами
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    double randomNumber = random.NextDouble();
+                    matrix[i, j] = randomNumber;
+                }
+            }
+
+            // Выведите массив на экран (для демонстрации)
+            Console.WriteLine("Случайно заполненный двумерный массив:");
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write(matrix[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+*/
+
+// Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, 
+// и возвращает значение этого элемента или же указание, что такого элемента нет.
+
+/*
+using System;
+
+namespace ArrayElementLookup
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите количество строк (m): ");
+            int m = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите количество столбцов (n): ");
+            int n = int.Parse(Console.ReadLine());
+
+            double[,] matrix = new double[m, n];
+
+            // Заполнение массива, например, случайными числами
+            Random random = new Random();
+            for (int i = 0; i < m; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    matrix[i, j] = random.NextDouble();
+                }
+            }
+
+            Console.Write("Введите индекс строки элемента: ");
+            int rowIndex = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите индекс столбца элемента: ");
+            int columnIndex = int.Parse(Console.ReadLine());
+
+            double elementValue = GetArrayElement(matrix, rowIndex, columnIndex);
+
+            if (elementValue != double.MinValue)
+            {
+                Console.WriteLine($"Значение элемента [{rowIndex}, {columnIndex}]: {elementValue}");
+            }
+            else
+            {
+                Console.WriteLine("Элемент с такими координатами не существует.");
+            }
+        }
+
+        static double GetArrayElement(double[,] array, int rowIndex, int columnIndex)
+        {
+            int rowCount = array.GetLength(0);
+            int columnCount = array.GetLength(1);
+
+            if (rowIndex >= 0 && rowIndex < rowCount && columnIndex >= 0 && columnIndex < columnCount)
+            {
+                return array[rowIndex, columnIndex];
+            }
+            else
+            {
+                return double.MinValue; // Специальное значение для обозначения отсутствия элемента
+            }
+        }
+    }
+}
+
+*/
 
 
+// Задача 52. Задайте двумерный массив из целых чисел. 
+// Найдите среднее арифметическое элементов в каждом столбце.
 
 
-// Задача 50.
-// 
+/*
+
+using System;
+
+namespace ColumnAverages
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите количество строк: ");
+            int rowCount = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите количество столбцов: ");
+            int columnCount = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите минимальное значение: ");
+            int minValue = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите максимальное значение: ");
+            int maxValue = int.Parse(Console.ReadLine());
+
+            int[,] matrix = new int[rowCount, columnCount];
+
+            Random random = new Random();
+
+            // Заполнение массива случайными значениями в заданном диапазоне
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
+                {
+                    matrix[i, j] = random.Next(minValue, maxValue + 1);
+                }
+            }
+
+            double[] columnAverages = new double[columnCount];
+
+            // Вычисление средних арифметических для каждого столбца
+            for (int j = 0; j < columnCount; j++)
+            {
+                int columnSum = 0;
+                for (int i = 0; i < rowCount; i++)
+                {
+                    columnSum += matrix[i, j];
+                }
+                columnAverages[j] = (double)columnSum / rowCount;
+            }
+
+            // Вывод результатов
+            Console.WriteLine("Массив:");
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("Средние арифметические для каждого столбца:");
+            for (int j = 0; j < columnCount; j++)
+            {
+                Console.WriteLine($"Столбец {j + 1}: {columnAverages[j]}");
+            }
+        }
+    }
+}
 
 
+*/
 
-
-// Задача 52.
-// 
