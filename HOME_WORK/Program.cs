@@ -651,6 +651,7 @@ namespace DecimalToBinaryConverterArray
 
 // ____________________________ Домашняя работа 7 ________________________________
 
+
 // Задача 47. Задайте двумерный массив размером m×n, заполненный случайными вещественными числами.
 // double
 
@@ -701,6 +702,7 @@ namespace RandomMatrix
 }
 
 */
+
 
 // Задача 50. Напишите программу, которая на вход принимает позиции элемента в двумерном массиве, 
 // и возвращает значение этого элемента или же указание, что такого элемента нет.
@@ -773,7 +775,6 @@ namespace ArrayElementLookup
 // Задача 52. Задайте двумерный массив из целых чисел. 
 // Найдите среднее арифметическое элементов в каждом столбце.
 
-
 /*
 
 using System;
@@ -845,4 +846,466 @@ namespace ColumnAverages
 
 
 */
+
+
+
+
+// ____________________________ Домашняя работа 7 ________________________________
+
+// Задача 54: Задайте двумерный массив. Напишите программу, которая упорядочит по убыванию 
+// элементы каждой строки двумерного массива.
+
+/*
+
+using System;
+
+namespace SortRowsDescending
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите количество строк: ");
+            int rowCount = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите количество столбцов: ");
+            int columnCount = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите минимальное значение: ");
+            int minValue = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите максимальное значение: ");
+            int maxValue = int.Parse(Console.ReadLine());
+
+            int[,] matrix = GenerateRandomMatrix(rowCount, columnCount, minValue, maxValue);
+
+            Console.WriteLine("Исходный двумерный массив:");
+            PrintMatrix(matrix);
+
+            SortRowsDescending(matrix);
+
+            Console.WriteLine("\nУпорядоченный двумерный массив по убыванию:");
+            PrintMatrix(matrix);
+        }
+
+        static int[,] GenerateRandomMatrix(int rowCount, int columnCount, int minValue, int maxValue)
+        {
+            Random random = new Random();
+            int[,] matrix = new int[rowCount, columnCount];
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
+                {
+                    matrix[i, j] = random.Next(minValue, maxValue + 1);
+                }
+            }
+
+            return matrix;
+        }
+
+        static void SortRowsDescending(int[,] matrix)
+        {
+            int rowCount = matrix.GetLength(0);
+            int columnCount = matrix.GetLength(1);
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount - 1; j++)
+                {
+                    for (int k = 0; k < columnCount - j - 1; k++)
+                    {
+                        if (matrix[i, k] < matrix[i, k + 1])
+                        {
+                            int temp = matrix[i, k];
+                            matrix[i, k] = matrix[i, k + 1];
+                            matrix[i, k + 1] = temp;
+                        }
+                    }
+                }
+            }
+        }
+
+        static void PrintMatrix(int[,] matrix)
+        {
+            int rowCount = matrix.GetLength(0);
+            int columnCount = matrix.GetLength(1);
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+
+*/
+
+// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет 
+// находить строку с наименьшей суммой элементов.
+
+/*
+
+using System;
+
+namespace FindRowWithMinSum
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите количество строк: ");
+            int rowCount = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите количество столбцов: ");
+            int columnCount = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите минимальное значение: ");
+            int minValue = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите максимальное значение: ");
+            int maxValue = int.Parse(Console.ReadLine());
+
+            int[,] matrix = GenerateRandomMatrix(rowCount, columnCount, minValue, maxValue);
+
+            Console.WriteLine("Сгенерированный двумерный массив:");
+            PrintMatrix(matrix);
+
+            int minSumRow = FindRowWithMinSum(matrix);
+
+            if (minSumRow != -1)
+            {
+                Console.WriteLine($"Строка с наименьшей суммой элементов: {minSumRow}");
+            }
+            else
+            {
+                Console.WriteLine("Массив пустой.");
+            }
+        }
+
+        static int[,] GenerateRandomMatrix(int rowCount, int columnCount, int minValue, int maxValue)
+        {
+            Random random = new Random();
+            int[,] matrix = new int[rowCount, columnCount];
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
+                {
+                    matrix[i, j] = random.Next(minValue, maxValue + 1);
+                }
+            }
+
+            return matrix;
+        }
+
+        static int FindRowWithMinSum(int[,] matrix)
+        {
+            int rowCount = matrix.GetLength(0);
+            int columnCount = matrix.GetLength(1);
+
+            if (rowCount == 0 || columnCount == 0)
+            {
+                return -1; // Массив пустой
+            }
+
+            int minSum = int.MaxValue;
+            int minSumRow = -1;
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                int rowSum = 0;
+
+                for (int j = 0; j < columnCount; j++)
+                {
+                    rowSum += matrix[i, j];
+                }
+
+                if (rowSum < minSum)
+                {
+                    minSum = rowSum;
+                    minSumRow = i;
+                }
+            }
+
+            return minSumRow;
+        }
+
+        static void PrintMatrix(int[,] matrix)
+        {
+            int rowCount = matrix.GetLength(0);
+            int columnCount = matrix.GetLength(1);
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+*/
+
+// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить 
+// произведение двух матриц.
+
+/*
+
+using System;
+
+namespace MatrixMultiplication
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите количество строк первой матрицы: ");
+            int rowCount1 = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите количество столбцов первой матрицы: ");
+            int columnCount1 = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите минимальное значение для первой матрицы: ");
+            int minValue1 = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите максимальное значение для первой матрицы: ");
+            int maxValue1 = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите количество строк второй матрицы: ");
+            int rowCount2 = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите количество столбцов второй матрицы: ");
+            int columnCount2 = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите минимальное значение для второй матрицы: ");
+            int minValue2 = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите максимальное значение для второй матрицы: ");
+            int maxValue2 = int.Parse(Console.ReadLine());
+
+            if (columnCount1 != rowCount2)
+            {
+                Console.WriteLine("Умножение матриц невозможно. Число столбцов первой матрицы должно быть равно числу строк второй матрицы.");
+            }
+            else
+            {
+                int[,] matrix1 = GenerateRandomMatrix(rowCount1, columnCount1, minValue1, maxValue1);
+                int[,] matrix2 = GenerateRandomMatrix(rowCount2, columnCount2, minValue2, maxValue2);
+
+                Console.WriteLine("Первая матрица:");
+                PrintMatrix(matrix1);
+
+                Console.WriteLine("\nВторая матрица:");
+                PrintMatrix(matrix2);
+
+                int[,] resultMatrix = MultiplyMatrices(matrix1, matrix2);
+
+                if (resultMatrix != null)
+                {
+                    Console.WriteLine("\nРезультат умножения матриц:");
+                    PrintMatrix(resultMatrix);
+                }
+                else
+                {
+                    Console.WriteLine("\nУмножение матриц невозможно из-за неправильных размеров.");
+                }
+            }
+        }
+
+        static int[,] GenerateRandomMatrix(int rowCount, int columnCount, int minValue, int maxValue)
+        {
+            Random random = new Random();
+            int[,] matrix = new int[rowCount, columnCount];
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
+                {
+                    matrix[i, j] = random.Next(minValue, maxValue + 1);
+                }
+            }
+
+            return matrix;
+        }
+
+        static int[,] MultiplyMatrices(int[,] matrix1, int[,] matrix2)
+        {
+            int rowCount1 = matrix1.GetLength(0);
+            int columnCount1 = matrix1.GetLength(1);
+            int rowCount2 = matrix2.GetLength(0);
+            int columnCount2 = matrix2.GetLength(1);
+
+            if (columnCount1 != rowCount2)
+            {
+                return null; // Умножение невозможно из-за неправильных размеров
+            }
+
+            int[,] resultMatrix = new int[rowCount1, columnCount2];
+
+            for (int i = 0; i < rowCount1; i++)
+            {
+                for (int j = 0; j < columnCount2; j++)
+                {
+                    int sum = 0;
+                    for (int k = 0; k < columnCount1; k++)
+                    {
+                        sum += matrix1[i, k] * matrix2[k, j];
+                    }
+                    resultMatrix[i, j] = sum;
+                }
+            }
+
+            return resultMatrix;
+        }
+
+        static void PrintMatrix(int[,] matrix)
+        {
+            int rowCount = matrix.GetLength(0);
+            int columnCount = matrix.GetLength(1);
+
+            for (int i = 0; i < rowCount; i++)
+            {
+                for (int j = 0; j < columnCount; j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+*/
+
+// Задача 60. Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. 
+// Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+
+/*
+
+using System;
+
+namespace ThreeDimensionalArrayWithIndices
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите размер по X: ");
+            int sizeX = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите размер по Y: ");
+            int sizeY = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите размер по Z: ");
+            int sizeZ = int.Parse(Console.ReadLine());
+
+            int[,,] threeDimArray = new int[sizeX, sizeY, sizeZ];
+            int currentNumber = 10;
+
+            // Заполнение трехмерного массива неповторяющимися двузначными числами
+            for (int i = 0; i < sizeX; i++)
+            {
+                for (int j = 0; j < sizeY; j++)
+                {
+                    for (int k = 0; k < sizeZ; k++)
+                    {
+                        threeDimArray[i, j, k] = currentNumber++;
+                    }
+                }
+            }
+
+            // Вывод трехмерного массива с индексами
+            for (int i = 0; i < sizeX; i++)
+            {
+                Console.WriteLine($"Слой {i + 1}:");
+                for (int j = 0; j < sizeY; j++)
+                {
+                    for (int k = 0; k < sizeZ; k++)
+                    {
+                        Console.Write($"[{i}, {j}, {k}] = {threeDimArray[i, j, k]}  ");
+                    }
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+*/
+
+
+// Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
+// Написал для размера любого массива, заданного пользователем.
+
+using System;
+
+namespace SpiralArray
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите размер массива (n): ");
+            int n = int.Parse(Console.ReadLine());
+
+            int[,] spiralArray = new int[n, n];
+            int value = 1;
+
+            int minRow = 0, maxRow = n - 1, minCol = 0, maxCol = n - 1;
+
+            while (value <= n * n)
+            {
+                // Слева направо
+                for (int i = minCol; i <= maxCol; i++)
+                {
+                    spiralArray[minRow, i] = value++;
+                }
+                minRow++;
+
+                // Сверху вниз
+                for (int i = minRow; i <= maxRow; i++)
+                {
+                    spiralArray[i, maxCol] = value++;
+                }
+                maxCol--;
+
+                // Справа налево
+                for (int i = maxCol; i >= minCol; i--)
+                {
+                    spiralArray[maxRow, i] = value++;
+                }
+                maxRow--;
+
+                // Снизу вверх
+                for (int i = maxRow; i >= minRow; i--)
+                {
+                    spiralArray[i, minCol] = value++;
+                }
+                minCol++;
+            }
+
+            // Вывод спирального массива
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < n; j++)
+                {
+                    Console.Write(spiralArray[i, j] + "\t");
+                }
+                Console.WriteLine();
+            }
+        }
+    }
+}
+
+
 
