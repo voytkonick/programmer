@@ -1247,6 +1247,8 @@ namespace ThreeDimensionalArrayWithIndices
 // Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
 // Написал для размера любого массива, заданного пользователем.
 
+/*
+
 using System;
 
 namespace SpiralArray
@@ -1307,5 +1309,142 @@ namespace SpiralArray
     }
 }
 
+*/
 
 
+
+
+
+// ____________________________________________________________________ Домашняя работа 8 ________________________________________________________________________________________
+
+// Задача 64: Задайте значение N. Напишите программу, которая выведет все натуральные числа 
+// в промежутке от N до 1. Выполнить с помощью рекурсии.
+
+/*
+
+using System;
+
+namespace RecursionCountdown
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите число N: ");
+            int n = int.Parse(Console.ReadLine());
+
+            CountdownFromNTo1(n);
+        }
+
+        static void CountdownFromNTo1(int n)
+        {
+            if (n >= 1)
+            {
+                Console.Write($"{n} ");
+                CountdownFromNTo1(n - 1);
+            }
+        }
+    }
+}
+
+
+*/
+
+
+
+// Задача 66: Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных 
+// элементов в промежутке от M до N.
+
+/*
+
+using System;
+
+namespace SumOfNaturalNumbers
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите значение M: ");
+            int m = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите значение N: ");
+            int n = int.Parse(Console.ReadLine());
+
+            int sum = CalculateSumOfNaturalNumbers(m, n);
+
+            Console.WriteLine($"Сумма натуральных чисел от {m} до {n}: {sum}");
+        }
+
+        static int CalculateSumOfNaturalNumbers(int m, int n)
+        {
+            int sum = 0;
+
+            if (m > n)
+            {
+                // Обмен значений, если M больше N
+                int temp = m;
+                m = n;
+                n = temp;
+            }
+
+            for (int i = m; i <= n; i++)
+            {
+                if (i > 0)
+                {
+                    sum += i;
+                }
+            }
+
+            return sum;
+        }
+    }
+}
+
+*/
+
+// Задача 68: Напишите программу вычисления функции Аккермана с помощью рекурсии. 
+// Даны два неотрицательных числа m и n.
+
+
+using System;
+
+namespace AckermannFunction
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.Write("Введите значение m: ");
+            int m = int.Parse(Console.ReadLine());
+
+            Console.Write("Введите значение n: ");
+            int n = int.Parse(Console.ReadLine());
+
+            int result = Ackermann(m, n);
+
+            Console.WriteLine($"A({m}, {n}) = {result}");
+        }
+
+        static int Ackermann(int m, int n)
+        {
+            if (m == 0)
+            {
+                return n + 1;
+            }
+            else if (m > 0 && n == 0)
+            {
+                return Ackermann(m - 1, 1);
+            }
+            else if (m > 0 && n > 0)
+            {
+                return Ackermann(m - 1, Ackermann(m, n - 1));
+            }
+            else
+            {
+                // Неверные аргументы
+                throw new ArgumentException("Значения m и n должны быть неотрицательными целыми числами.");
+            }
+        }
+    }
+}
